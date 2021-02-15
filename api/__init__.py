@@ -1,6 +1,9 @@
 from flask import Flask
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from .views import main
+
+
+db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
@@ -10,8 +13,10 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'this-too-shall-pass'
 
+    db.init_app(app)
 
     app.register_blueprint(main, url_prefix='')
 
-    app.run(port=3000)
+    return app
+    #app.run(port=3000)
 
