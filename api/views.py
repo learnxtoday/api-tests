@@ -1,4 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
+from . import db
+
 
 main = Blueprint('main', __name__)
 
@@ -16,6 +18,7 @@ def home():
 
 @main.route('/add_movie', methods=['POST'])
 def add_movie():
+    movie_data= request.get_json()
 
     return 'Done', 201
 
