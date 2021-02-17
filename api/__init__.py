@@ -5,6 +5,7 @@ from .views import main
 
 db = SQLAlchemy()
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -18,4 +19,4 @@ def create_app():
     app.register_blueprint(main, url_prefix='')
 
     return app
-    #app.run(port=3000)
+    # app.run(port=3000)
