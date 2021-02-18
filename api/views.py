@@ -37,3 +37,17 @@ def movies():
         movies.append({'title': movie.title, 'rating': movie.rating})
 
     return jsonify({'movies': movies})
+
+
+@main.route('/delete/<movie_name>')
+def delete(movie_name):
+    if movie_name:
+        exists = Movie.query.filter_by(title=movie_name).first()
+
+    if exists:
+        db.session.delete(exists)
+        db.session.commit()
+
+    result = 'Deleted {}'.format(exists.title)
+
+    return result, 200
