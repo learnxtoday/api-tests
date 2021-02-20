@@ -16,7 +16,7 @@ def create_app():
     db.init_app(app)
 
     from .views import main
-    app.register_blueprint(main, url_prefix='')
+    app.register_blueprint(main, url_prefix='/v1')
 
     return app
     # app.run(port=3000)
